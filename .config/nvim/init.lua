@@ -1,6 +1,6 @@
 require('plugins')
 
---vim.cmd[[colorscheme snow]]
+vim.cmd[[colorscheme nord]]
 --vim.opt.background="dark"
 
 vim.opt.wrap = true
@@ -9,10 +9,11 @@ vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.guicursor = 'n-v-c-i:block-Cursor'
+vim.opt.cursorline = true
+vim.opt.colorcolumn = '100'
 vim.g.mapleader = ';'
 vim.opt.mouse = ''
 vim.opt.termguicolors = true
---vim.cmd.colorcheme('tokyonight')
 
 
 require("autoclose").setup()

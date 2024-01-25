@@ -17,6 +17,8 @@ return require('packer').startup(function(use)
   }
 
   use 'nightsense/snow'
+  use "joshdick/onedark.vim"
+  use 'nordtheme/vim'
 
   use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
 
