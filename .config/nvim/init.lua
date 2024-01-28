@@ -1,7 +1,7 @@
 require('plugins')
 
 vim.cmd[[colorscheme nord]]
---vim.opt.background="dark"
+vim.cmd[[highlight Cursor guibg=grey]]
 
 vim.opt.wrap = true
 vim.opt.nu = true
