@@ -57,8 +57,6 @@ return require('packer').startup(function(use)
     requires = { {'nvim-lua/plenary.nvim'} }
   }
 
-  use 'm4xshen/autoclose.nvim'
-
   -- Using packer.nvim
   use 'johnfrankmorgan/whitespace.nvim'
 

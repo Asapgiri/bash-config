@@ -16,8 +16,6 @@ vim.opt.mouse = ''
 vim.opt.termguicolors = true
 
 
-require("autoclose").setup()
-
 local lsp_zero = require('lsp-zero')
 
 lsp_zero.on_attach(function(client, bufnr)
