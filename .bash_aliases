@@ -2,8 +2,8 @@
 
 alias grep='grep --color=always'
 
-alias ll='ls -alF'
-alias la='ls -A'
+alias ll='ls -lF'
+alias la='ls -AlF'
 alias l='ls -CF'
 
 ## Aliases for git:
