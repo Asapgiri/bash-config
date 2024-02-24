@@ -15,6 +15,7 @@ vim.opt.colorcolumn = '120'
 vim.g.mapleader = ';'
 vim.opt.mouse = ''
 vim.opt.termguicolors = true
+vim.g.editorconfig = false
 
 
 require('lualine').setup({
@@ -53,10 +54,23 @@ end)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
-  ensure_installed = {},
-  handlers = {
-    lsp_zero.default_setup,
-  },
+    ensure_installed = {
+        'bashls',
+        'checkmake',
+        'clangd',
+        'cmake',
+        'dockerls',
+        'doctoc',
+        'lemminx',
+        'ltex',
+        'omnisharp',
+        'pylsp',
+        'texlab',
+        'zls'
+    },
+    handlers = {
+        lsp_zero.default_setup,
+    },
 })
 
 local cmp = require('cmp')
