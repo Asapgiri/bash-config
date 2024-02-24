@@ -17,8 +17,9 @@ return require('packer').startup(function(use)
   }
 
   use 'nightsense/snow'
-  use "joshdick/onedark.vim"
+  use 'joshdick/onedark.vim'
   use 'nordtheme/vim'
+  use 'cpea2506/one_monokai.nvim'
 
   use "nvim-lua/plenary.nvim" -- don't forget to add this one if you don't have it yet!
 
@@ -74,5 +75,11 @@ return require('packer').startup(function(use)
     require('git-conflict').setup()
   end}
 
+  use 'jiangmiao/auto-pairs'
+
+  use {
+    'nvim-lualine/lualine.nvim',
+    requires = { 'nvim-tree/nvim-web-devicons', opt = true }
+  }
 end)
 

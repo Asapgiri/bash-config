@@ -1,6 +1,7 @@
 require('plugins')
 
-vim.cmd[[colorscheme nord]]
+--vim.cmd[[colorscheme onedark]]
+vim.cmd[[colorscheme one_monokai]]
 vim.cmd[[highlight Cursor guibg=grey]]
 
 vim.opt.wrap = true
@@ -10,11 +11,37 @@ vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
 vim.opt.guicursor = 'n-v-c-i:block-Cursor'
 vim.opt.cursorline = true
-vim.opt.colorcolumn = '100'
+vim.opt.colorcolumn = '120'
 vim.g.mapleader = ';'
 vim.opt.mouse = ''
 vim.opt.termguicolors = true
 
+
+require('lualine').setup({
+    options = {
+        theme = 'one_monokai',
+        component_separators = { left = "", right = "" },
+        section_separators = { left = "", right = "" },
+    },
+})
+require("one_monokai").setup({
+    transparent = true,  -- enable transparent window
+    colors = {
+        lmao = "#ffffff", -- add new color
+        pink = "#ec6075", -- replace default color
+    },
+    themes = function(colors)
+        -- change highlight of some groups,
+        -- the key and value will be passed respectively to "nvim_set_hl"
+        return {
+            Normal = { bg = colors.lmao },
+            DiffChange = { fg = colors.white:darken(0.3) },
+            ErrorMsg = { fg = colors.pink, standout = true },
+            ["@lsp.type.keyword"] = { link = "@keyword" }
+        }
+    end,
+    italics = false, -- disable italics
+})
 
 local lsp_zero = require('lsp-zero')
 
