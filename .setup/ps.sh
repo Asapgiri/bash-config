@@ -26,9 +26,54 @@ if [ -n "$force_color_prompt" ]; then
     fi
 fi
 
+# NerdFont Start ======================================================
+# colors
+system_bg=44        # blue
+system_fg=97        # white
+system_fg_user=34   # blue
+
+if [ "$EUID" -ne 0 ]; then
+    user_bg=42      # green
+    user_fg=30      # black
+    user_fg_path=32 # green
+    path_fg=32      # green
+else
+    user_bg=41      # red
+    user_fg=30      # black
+    user_fg_path=31 # red
+    path_fg=97      # white
+fi
+
+# functions
+slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0b0"; }
+#slope_left() { echo -e "\e[32m\ue0ba"; }
+slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
+slope_git() { echo -e "\e[100;33m\ue0ba"; }
+at() { echo -e "\e[${user_bg};${system_fg_user}m\ue0bc"; }
+show_git_branch() {
+    if [ ! -z "$(__git_ps1)" ]; then
+        echo -e "$(slope_git)\e[43;30m \uf418 $(__git_ps1 "%s") "
+    fi
+}
+arrow() {
+    if [ ! -z "$(__git_ps1)" ]; then
+        echo -e "\e[49;33m\ue0b0"
+    else
+        echo -e "\e[49;90m\ue0b0"
+    fi
+}
+
+# NerdFont End ========================================================
+
 if [ "$color_prompt" = yes ]; then
     source /usr/lib/git-core/git-sh-prompt
-    PS1='[${debian_chroot:+($debian_chroot)}\[\033[01;33m\]\u\[\033[01;32m\]@\[\033[01;00m\]\h]:\[\033[01;32m\]\w\[\033[33m\]$(__git_ps1 " (%s)")\[\033[00m\]\$ '
+    PS1="\
+$(slope_left)${debian_chroot:+($debian_chroot)} \
+\h $(at)\
+\\[\e[${user_bg};${user_fg}m\\] \u \
+\\[$(slope_path)\\] \w \
+\\[\$(show_git_branch)\\]\
+\\[\$(arrow)\e[0m\\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
