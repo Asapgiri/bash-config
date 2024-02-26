@@ -17,7 +17,8 @@ return require('packer').startup(function(use)
   }
 
   use 'nightsense/snow'
-  use 'joshdick/onedark.vim'
+  use 'ellisonleao/gruvbox.nvim'
+  use "joshdick/onedark.vim"
   use 'nordtheme/vim'
   use 'cpea2506/one_monokai.nvim'
 
@@ -26,6 +27,11 @@ return require('packer').startup(function(use)
   use {
     "ThePrimeagen/harpoon",
     branch = "harpoon2",
+    requires = { {"nvim-lua/plenary.nvim"} }
+  }
+
+  use {
+    "folke/todo-comments.nvim",
     requires = { {"nvim-lua/plenary.nvim"} }
   }
 
