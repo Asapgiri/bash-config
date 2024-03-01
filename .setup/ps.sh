@@ -37,27 +37,33 @@ if [ "$EUID" -ne 0 ]; then
     user_fg=30      # black
     user_fg_path=32 # green
     path_fg=32      # green
+    git_fg_arrow=33 # yellow
+    git_fg=30       # black
+    git_bg=43       # yellow
 else
     user_bg=41      # red
     user_fg=30      # black
     user_fg_path=31 # red
     path_fg=97      # white
+    git_fg_arrow=31 # red
+    git_fg=30       # black
+    git_bg=41       # red
 fi
 
 # functions
 slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0b0"; }
 #slope_left() { echo -e "\e[32m\ue0ba"; }
 slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
-slope_git() { echo -e "\e[100;33m\ue0ba"; }
+slope_git() { echo -e "\e[100;${git_fg_arrow}m\ue0ba"; }
 at() { echo -e "\e[${user_bg};${system_fg_user}m\ue0bc"; }
 show_git_branch() {
     if [ ! -z "$(__git_ps1)" ]; then
-        echo -e "$(slope_git)\e[43;30m \uf418 $(__git_ps1 "%s") "
+        echo -e "$(slope_git)\e[${git_bg};${git_fg}m \uf418 $(__git_ps1 "%s") "
     fi
 }
 arrow() {
     if [ ! -z "$(__git_ps1)" ]; then
-        echo -e "\e[49;33m\ue0b0"
+        echo -e "\e[49;${git_fg_arrow}m\ue0b0"
     else
         echo -e "\e[49;90m\ue0b0"
     fi

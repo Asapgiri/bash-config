@@ -56,11 +56,9 @@ require('mason').setup({})
 require('mason-lspconfig').setup({
     ensure_installed = {
         'bashls',
-        'checkmake',
         'clangd',
         'cmake',
         'dockerls',
-        'doctoc',
         'lemminx',
         'ltex',
         'omnisharp',
