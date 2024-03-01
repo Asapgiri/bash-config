@@ -52,34 +52,23 @@ fi
 
 # functions
 slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0b0"; }
-#slope_left() { echo -e "\e[32m\ue0ba"; }
 slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
-slope_git() { echo -e "\e[100;${git_fg_arrow}m\ue0ba"; }
-at() { echo -e "\e[${user_bg};${system_fg_user}m\ue0bc"; }
-show_git_branch() {
-    if [ ! -z "$(__git_ps1)" ]; then
-        echo -e "$(slope_git)\e[${git_bg};${git_fg}m \uf418 $(__git_ps1 "%s") "
-    fi
-}
-arrow() {
-    if [ ! -z "$(__git_ps1)" ]; then
-        echo -e "\e[49;${git_fg_arrow}m\ue0b0"
-    else
-        echo -e "\e[49;90m\ue0b0"
-    fi
-}
+slope_git() { echo -e "\\[\e[100;${git_fg_arrow}m\\]\ue0ba\\[\e[${git_bg};${git_fg}m\\] \uf418"; }
+at() { echo -e "\\[\e[${user_bg};${system_fg_user}m\\]\ue0bc"; }
+arrow() { echo -e "\ue0b0"; }
 
 # NerdFont End ========================================================
 
 if [ "$color_prompt" = yes ]; then
     source /usr/lib/git-core/git-sh-prompt
     PS1="\
-$(slope_left)${debian_chroot:+($debian_chroot)} \
+$(slope_left)\${debian_chroot:+(\$debian_chroot)} \
 \h $(at)\
 \\[\e[${user_bg};${user_fg}m\\] \u \
-\\[$(slope_path)\\] \w \
-\\[\$(show_git_branch)\\]\
-\\[\$(arrow)\e[0m\\] "
+$(slope_path) \w \
+\\[\e[49;90m\\]\
+\$(__git_ps1 \"$(slope_git) %s\\[\e[49;${git_fg_arrow}m\\]\")\
+$(arrow)\\[\e[0m\\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
 fi
