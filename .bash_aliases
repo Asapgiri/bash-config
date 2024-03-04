@@ -1,10 +1,13 @@
 #!/bin/bash
+eza_full_format='--git --icons=always --group-directories-first --time-style "+%Y %b %d - %H:%M"'
 
 alias grep='grep --color=always'
 
-alias ll='ls -lF'
-alias la='ls -AlF'
+alias lt="eza -lgF --total-size ${eza_full_format}"
+alias ll="eza -lgF ${eza_full_format}"
+alias la="eza -AlgF ${eza_full_format}"
 alias l='ls -CF'
+alias ls='eza --icons=always --group-directories-first'
 
 ## Aliases for git:
 
