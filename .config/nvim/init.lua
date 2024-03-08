@@ -17,9 +17,20 @@ vim.opt.mouse = ''
 vim.opt.termguicolors = true
 vim.g.editorconfig = false
 
-vim.keymap.set("n", "<leader>v", function() vim.cmd[[vsplit]] end)
-vim.keymap.set("n", "<leader>h", function() vim.cmd[[split]] end)
-vim.keymap.set("n", "<leader>c", function() vim.cmd[[split]] vim.cmd[[term]] end)
+vim.keymap.set("n", "<leader>v", function() vim.cmd[[vertical botright split]] end)
+vim.keymap.set("n", "<leader>h", function() vim.cmd[[horizontal botright split]] end)
+vim.keymap.set("n", "<leader>ch", function() vim.cmd[[
+    horizontal botright 20split
+    term
+    tnoremap <Esc> <C-\><C-n>
+]] end)
+vim.keymap.set("n", "<leader>cv", function() vim.cmd[[
+    vertical botright split
+    term
+    tnoremap <Esc> <C-\><C-n>
+]] end)
+vim.keymap.set("n", "<leader>crr", function() vim.cmd[[resize]] end)
+vim.keymap.set("n", "<leader>crf", function() vim.cmd[[resize 20]] end)
 
 vim.keymap.set("n", "<leader>k", function() vim.cmd[[BufferNext]] end)
 vim.keymap.set("n", "<leader>j", function() vim.cmd[[BufferPrev]] end)
