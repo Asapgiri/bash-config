@@ -51,11 +51,11 @@ else
 fi
 
 # functions
-slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0b0"; }
+slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0bc"; }
 slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
 slope_git() { echo -e "\\[\e[100;${git_fg_arrow}m\\]\ue0ba\\[\e[${git_bg};${git_fg}m\\] \uf418"; }
 at() { echo -e "\\[\e[${user_bg};${system_fg_user}m\\]\ue0bc"; }
-arrow() { echo -e "\ue0b0"; }
+arrow() { echo -e "\ue0bc"; }
 
 # NerdFont End ========================================================
 
@@ -67,7 +67,7 @@ $(slope_left)\${debian_chroot:+(\$debian_chroot)} \
 \\[\e[${user_bg};${user_fg}m\\] \u \
 $(slope_path) \w \
 \\[\e[49;90m\\]\
-\$(__git_ps1 \"$(slope_git) %s\\[\e[49;${git_fg_arrow}m\\]\")\
+\$(__git_ps1 \"$(slope_git) %s \\[\e[49;${git_fg_arrow}m\\]\")\
 $(arrow)\\[\e[0m\\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
