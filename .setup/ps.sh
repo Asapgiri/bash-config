@@ -54,20 +54,55 @@ fi
 slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0bc"; }
 slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
 slope_git() { echo -e "\\[\e[100;${git_fg_arrow}m\\]\ue0ba\\[\e[${git_bg};${git_fg}m\\] \uf418"; }
+slope_time() { echo -e "\\[\e[107m\\]\ue0bc\\[\e[107;30m\\]"; }
 at() { echo -e "\\[\e[${user_bg};${system_fg_user}m\\]\ue0bc"; }
 arrow() { echo -e "\ue0bc"; }
+
+# Set time counter
+function roundseconds() {
+  # rounds a number to 2 decimal places
+  echo m=$1";h=0.5;scale=4;t=1000;if(m<0) h=-0.5;a=m*t+h;scale=2;a/t;" | bc
+}
+
+function bash_getstarttime() {
+  # places the epoch time in ns into shared memory
+  date +%s.%N > "/dev/shm/${USER}.bashtime.${1}"
+}
+
+function bash_getstoptime() {
+  # reads stored epoch time and subtracts from current
+  local endtime=$(date +%s.%N)
+  local starttime=$(cat /dev/shm/${USER}.bashtime.${1})
+  if  [ "0" == "$starttime" ]; then
+    starttime=$endtime
+    echo ".01"
+    exit 0
+  fi
+  roundseconds $(echo $(eval echo "$endtime - $starttime") | bc)
+  echo 0 > /dev/shm/${USER}.bashtime.${1}
+}
+
+function runonexit (){
+  rm /dev/shm/${USER}.bashtime.${ROOTPID}
+}
+
+trap runonexit EXIT
+ROOTPID=$BASHPID
+bash_getstarttime $ROOTPID
 
 # NerdFont End ========================================================
 
 if [ "$color_prompt" = yes ]; then
     source /usr/lib/git-core/git-sh-prompt
+    PS0="\$(bash_getstarttime $ROOTPID)"
     PS1="\
-$(slope_left)\${debian_chroot:+(\$debian_chroot)} \
-\h $(at)\
+\${debian_chroot:+(\$debian_chroot)}\
+$(slope_left) \h $(at)\
 \\[\e[${user_bg};${user_fg}m\\] \u \
 $(slope_path) \w \
 \\[\e[49;90m\\]\
 \$(__git_ps1 \"$(slope_git) %s \\[\e[49;${git_fg_arrow}m\\]\")\
+$(slope_time) \$(bash_getstoptime $ROOTPID)s \\[\e[49;39m\\]\
 $(arrow)\\[\e[0m\\] "
 else
     PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
