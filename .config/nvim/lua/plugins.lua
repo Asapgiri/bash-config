@@ -86,6 +86,6 @@ return require('packer').startup(function(use)
 
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
-  use 'romgrk/barbar.nvim'
+  --use 'romgrk/barbar.nvim'
+  use 'tpope/vim-fugitive'
 end)
-

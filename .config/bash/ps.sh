@@ -44,19 +44,24 @@ else
     user_bg=41      # red
     user_fg=30      # black
     user_fg_path=31 # red
-    path_fg=97      # white
+    path_fg=31      # red
     git_fg_arrow=31 # red
     git_fg=30       # black
     git_bg=41       # red
 fi
 
+component_separator="\ue0c7"
+#component_separator=""
+#component_separator=
+
 # functions
-slope_left() { echo -e "\\[\e[${system_bg};30m\\]\ue0bc"; }
-slope_path() { echo -e "\\[\e[100;${user_fg_path}m\\]\ue0bc\\[\e[${path_fg}m\\]"; }
-slope_git() { echo -e "\\[\e[100;${git_fg_arrow}m\\]\ue0ba\\[\e[${git_bg};${git_fg}m\\] \uf418"; }
-slope_time() { echo -e "\\[\e[107m\\]\ue0bc\\[\e[107;30m\\]"; }
-at() { echo -e "\\[\e[${user_bg};${system_fg_user}m\\]\ue0bc"; }
-arrow() { echo -e "\ue0bc"; }
+slope_left() { echo -e "\\[\e[${system_fg_user}m\\]${left_separator}\\[\e[${user_bg};${user_fg}m\\]"; }
+slope_path() { echo -e "\\[\e[90m\\]${component_separator}\\[\e[100;${path_fg}m\\]"; }
+slope_git() { echo -e "\\[\e[100;${git_fg_arrow}m\\]${component_separator}\\[\e[${git_bg};${git_fg}m\\] \uf418"; }
+slope_time() { echo -e "\\[\e[39m\\]${component_separator}\\[\e[107;30m\\]"; }
+at() { echo -e "\\[\e[${user_fg_path}m\\]${component_separator}"; }
+#arrow() { echo -e "\\[\e[30m\\]${component_separator}"; }
+arrow() { echo -e "\ue0c7"; }
 
 # Set time counter
 function roundseconds() {
@@ -97,15 +102,21 @@ if [ "$color_prompt" = yes ]; then
     PS0="\$(bash_getstarttime $ROOTPID)"
     PS1="\
 \${debian_chroot:+(\$debian_chroot)}\
-$(slope_left) \h $(at)\
-\\[\e[${user_bg};${user_fg}m\\] \u \
+$(slope_left)\
 $(slope_path) \w \
-\\[\e[49;90m\\]\
-\$(__git_ps1 \"$(slope_git) %s \\[\e[49;${git_fg_arrow}m\\]\")\
-$(slope_time) \$(bash_getstoptime $ROOTPID)s \\[\e[49;39m\\]\
+\$(__git_ps1 \"$(slope_git) %s \")\
+$(slope_time) \$(bash_getstoptime $ROOTPID)s \
 $(arrow)\\[\e[0m\\] "
+#    PS1="\
+#\${debian_chroot:+(\$debian_chroot)}\
+#$(slope_left) \h $(at)\
+#\\[\e[${user_bg};${user_fg}m\\] \u \
+#$(slope_path) \w \
+#\$(__git_ps1 \"$(slope_git) %s \")\
+#$(slope_time) \$(bash_getstoptime $ROOTPID)s \
+#$(arrow)\\[\e[0m\\] "
 else
-    PS1='${debian_chroot:+($debian_chroot)}\u@\h:\w\$ '
+    PS1='${debian_chroot:+($debian_chroot)}\w>\$ '
 fi
 unset color_prompt force_color_prompt
 

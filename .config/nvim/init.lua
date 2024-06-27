@@ -16,6 +16,7 @@ vim.g.mapleader = ';'
 vim.opt.mouse = ''
 vim.opt.termguicolors = true
 vim.g.editorconfig = false
+vim.opt.clipboard = 'unnamedplus'
 
 vim.keymap.set("n", "<leader>v", function() vim.cmd[[vertical botright split]] end)
 vim.keymap.set("n", "<leader>h", function() vim.cmd[[horizontal botright split]] end)
@@ -29,14 +30,23 @@ vim.keymap.set("n", "<leader>cv", function() vim.cmd[[
     term
     tnoremap <Esc> <C-\><C-n>
 ]] end)
+vim.keymap.set("n", "<leader>cn", function() vim.cmd[[
+    tab split
+    term
+    tnoremap <Esc> <C-\><C-n>
+]] end)
 vim.keymap.set("n", "<leader>crr", function() vim.cmd[[resize]] end)
 vim.keymap.set("n", "<leader>crf", function() vim.cmd[[resize 20]] end)
 
-vim.keymap.set("n", "<leader>k", function() vim.cmd[[BufferNext]] end)
-vim.keymap.set("n", "<leader>j", function() vim.cmd[[BufferPrev]] end)
-vim.keymap.set("n", "<leader>e", function() vim.cmd[[BufferClose]] end)
-vim.keymap.set("n", "<leader>r", function() vim.cmd[[quitall]] end)
-vim.keymap.set("n", "<leader>w", function() vim.cmd[[Ex]] end)
+--vim.keymap.set("n", "<leader>k", function() vim.cmd[[BufferNext]] end)
+--vim.keymap.set("n", "<leader>j", function() vim.cmd[[BufferPrev]] end)
+--vim.keymap.set("n", "<leader>e", function() vim.cmd[[BufferClose]] end)
+vim.keymap.set("n", "<leader>n", function() vim.cmd[[tab split]] end)
+vim.keymap.set("n", "<leader>k", function() vim.cmd[[tabnext]] end)
+vim.keymap.set("n", "<leader>j", function() vim.cmd[[tabprev]] end)
+vim.keymap.set("n", "<leader>w", function() vim.cmd[[tabclose]] end)
+vim.keymap.set("n", "<leader>r", function() vim.cmd[[quitall!]] end)
+vim.keymap.set("n", "<leader>e", function() vim.cmd[[Ex]] end)
 
 -- Remap move keys
 vim.keymap.set("n", "<M-j>", ":m .+1<CR>==")

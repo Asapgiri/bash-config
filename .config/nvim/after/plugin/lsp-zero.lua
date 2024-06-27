@@ -37,10 +37,10 @@ require('mason-lspconfig').setup({
     ensure_installed = {
         'bashls',
         'clangd',
-        'cmake',
         'dockerls',
         'lemminx',
         'ltex',
+        'neocmake',
         'omnisharp',
         'pylsp',
         'texlab',
