@@ -82,8 +82,6 @@ return require('packer').startup(function(use)
     require('git-conflict').setup()
   end}
 
-  use 'jiangmiao/auto-pairs'
-
   use 'nvim-tree/nvim-web-devicons'
   use 'nvim-lualine/lualine.nvim'
   --use 'romgrk/barbar.nvim'
@@ -92,4 +90,12 @@ return require('packer').startup(function(use)
   use 'christoomey/vim-tmux-navigator'
 
   use 'airblade/vim-gitgutter'
+
+  use {
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = function()
+      require("nvim-autopairs").setup {}
+    end
+  }
 end)
