@@ -6,6 +6,7 @@ vim.cmd[[highlight Cursor guibg=grey]]
 vim.opt.wrap = true
 vim.cmd[[colorscheme one_monokai]]
 vim.opt.nu = true
+vim.opt.relativenumber = true
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 vim.opt.shiftwidth = 4
@@ -42,17 +43,22 @@ vim.keymap.set("n", "<leader>crf", function() vim.cmd[[resize 20]] end)
 --vim.keymap.set("n", "<leader>j", function() vim.cmd[[BufferPrev]] end)
 --vim.keymap.set("n", "<leader>e", function() vim.cmd[[BufferClose]] end)
 vim.keymap.set("n", "<leader>n", function() vim.cmd[[tab split]] end)
-vim.keymap.set("n", "<leader>k", function() vim.cmd[[tabnext]] end)
-vim.keymap.set("n", "<leader>j", function() vim.cmd[[tabprev]] end)
+--vim.keymap.set("n", "<leader>k", function() vim.cmd[[tabnext]] end)
+--vim.keymap.set("n", "<leader>j", function() vim.cmd[[tabprev]] end)
+vim.keymap.set("n", "L", function() vim.cmd[[tabnext]] end)
+vim.keymap.set("n", "H", function() vim.cmd[[tabprev]] end)
 vim.keymap.set("n", "<leader>w", function() vim.cmd[[tabclose]] end)
 vim.keymap.set("n", "<leader>r", function() vim.cmd[[quitall!]] end)
 vim.keymap.set("n", "<leader>e", function() vim.cmd[[Ex]] end)
 
+--vim.keymap.set("n", "<C-l>", function() vim.cmd[[tabnext]] end)
+--vim.keymap.set("n", "<C-h>", function() vim.cmd[[tabprev]] end)
+
 -- Remap move keys
-vim.keymap.set("n", "<M-j>", ":m .+1<CR>==")
-vim.keymap.set("n", "<M-k>", ":m .-2<CR>==")
-vim.keymap.set("v", "<M-j>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<M-k>", ":m '<-2<CR>gv=gv")
+vim.keymap.set("n", "<C-J>", ":m .+1<CR>==")
+vim.keymap.set("n", "<C-K>", ":m .-2<CR>==")
+vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
 
 -- Remap Tmux Navigator
 vim.keymap.set("n", "<C-h", function () vim.cmd[[TmuxNavigateLeft]] end)

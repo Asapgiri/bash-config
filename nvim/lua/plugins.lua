@@ -7,6 +7,13 @@ return require('packer').startup(function(use)
   -- Packer can manage itself
   use 'wbthomason/packer.nvim'
 
+  -- Simple plugins can be specified as strings
+  use 'rstacruz/vim-closer'
+
+  -- Lazy loading:
+  -- Load on specific commands
+  use {'tpope/vim-dispatch', opt = true, cmd = {'Dispatch', 'Make', 'Focus', 'Start'}}
+
   -- Load on a combination of conditions: specific filetypes or commands
   -- Also run code after load (see the "config" key)
   use {
@@ -98,4 +105,14 @@ return require('packer').startup(function(use)
       require("nvim-autopairs").setup {}
     end
   }
+
+  use {
+      'dstein64/vim-startuptime'
+  }
 end)
+
+
+
+
+
+

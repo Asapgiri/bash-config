@@ -34,6 +34,7 @@ require('lspconfig').lua_ls.setup({
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
+    automatic_enable = false,
     ensure_installed = {
         --'bashls',
         'clangd',

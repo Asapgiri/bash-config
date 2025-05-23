@@ -1,0 +1,22 @@
+[colors.primary]
+background = "#000000"
+
+[window]
+dimensions = { columns = 150, lines = 50 }
+opacity = 0.9
+dynamic_title = true
+resize_increments = true
+option_as_alt = "Both"
+
+[font]
+normal = { family = "SFMono Nerd Font" }
+size = 12
+
+[terminal]
+shell = "/bin/zsh"
+
+[mouse]
+#hide_when_typing = true
+#bindings = [
+#{ mouse = "Right", mods = "Control", action="Paste" }
+#]

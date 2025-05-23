@@ -1,5 +1,6 @@
 require('lualine').setup({
     options = {
+        icons_enabled = true,
         theme = 'one_monokai',
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
@@ -21,15 +22,8 @@ require('lualine').setup({
                 'tabs',
                 use_mode_colors = true,
                 mode = 2,
-                max_length = vim.o.columns / 2
+                max_length = vim.o.columns --/ 2
             }
         },
-        lualine_y = {
-            {
-                'buffers',
-                use_mode_colors = true,
-                max_length = vim.o.columns / 2
-            }
-        }
     }
 })
