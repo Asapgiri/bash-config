@@ -55,10 +55,10 @@ vim.keymap.set("n", "<leader>e", function() vim.cmd[[Ex]] end)
 --vim.keymap.set("n", "<C-h>", function() vim.cmd[[tabprev]] end)
 
 -- Remap move keys
-vim.keymap.set("n", "<C-J>", ":m .+1<CR>==")
-vim.keymap.set("n", "<C-K>", ":m .-2<CR>==")
-vim.keymap.set("v", "<C-J>", ":m '>+1<CR>gv=gv")
-vim.keymap.set("v", "<C-K>", ":m '<-2<CR>gv=gv")
+--vim.keymap.set("n", "J", ":m .+1<CR>==")
+--vim.keymap.set("n", "K", ":m .-2<CR>==")
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv")
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv")
 
 -- Remap Tmux Navigator
 vim.keymap.set("n", "<C-h", function () vim.cmd[[TmuxNavigateLeft]] end)

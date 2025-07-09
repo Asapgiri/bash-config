@@ -21,7 +21,9 @@ lsp_zero.on_attach(function(client, bufnr)
     map_lsp_v('<leader>x', vim.lsp.buf.format)
 end)
 
-require('lspconfig').lua_ls.setup({
+lspconfig = require('lspconfig')
+
+lspconfig.lua_ls.setup({
     settings = {
         Lua = {
             diagnostics = {
@@ -30,6 +32,12 @@ require('lspconfig').lua_ls.setup({
             },
         },
     },
+})
+lspconfig.zls.setup({
+	cmd = { "zls" },
+	filetypes = { "zig", "zir" },
+	root_dir = lspconfig.util.root_pattern("zls.json", "build.zig", ".git"),
+	single_file_support = true,
 })
 
 require('mason').setup({})

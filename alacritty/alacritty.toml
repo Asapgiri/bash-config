@@ -6,7 +6,7 @@ dimensions = { columns = 150, lines = 50 }
 opacity = 0.9
 dynamic_title = true
 resize_increments = true
-option_as_alt = "Both"
+#option_as_alt = "Both"
 
 [font]
 normal = { family = "SFMono Nerd Font" }
@@ -20,3 +20,14 @@ shell = "/bin/zsh"
 #bindings = [
 #{ mouse = "Right", mods = "Control", action="Paste" }
 #]
+
+[keyboard]
+bindings = [
+  { key = "J",  mods = "Command", chars = "\u0002p" },  # tmux prev tab
+  { key = "K",  mods = "Command", chars = "\u0002n" },  # tmux next tab
+  { key = "\\", mods = "Command", chars = "\u0002c" },  # tmux new tab
+  { key = ",",  mods = "Command", chars = "\u0002\"" }, # tmux vertical split
+  { key = ".",  mods = "Command", chars = "\u0002%" },  # tmux horizontal split
+  { key = "[",  mods = "Command", chars = "\u0002[" },  # tmux edit mode
+  { key = "]",  mods = "Command", chars = "\u0002]" },  # tmux paste
+]
