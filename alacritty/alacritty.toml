@@ -12,7 +12,9 @@ resize_increments = true
 #option_as_alt = "Both"
 
 [font]
-normal = { family = "SFMono Nerd Font" }
+# normal = { family = "SFMono Nerd Font", style = "Light" }
+# normal = { family = "Inconsolata Nerd Font Mono" }
+normal = { family = "CommitMono Nerd Font Mono" }
 size = 12
 
 [terminal]
