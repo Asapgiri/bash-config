@@ -32,6 +32,7 @@ telescope.setup({
             "--glob=!**/dist/*",
             "--glob=!**/yarn.lock",
             "--glob=!**/package-lock.json",
+            "--glob=!**/compile_commands.json",
         },
     },
     pickers = {

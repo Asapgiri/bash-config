@@ -1,6 +1,9 @@
 [colors.primary]
 background = "#000000"
 
+[env]
+term = "xterm-256color"
+
 [window]
 dimensions = { columns = 150, lines = 50 }
 opacity = 0.9
@@ -30,4 +33,12 @@ bindings = [
   { key = ".",  mods = "Command", chars = "\u0002%" },  # tmux horizontal split
   { key = "[",  mods = "Command", chars = "\u0002[" },  # tmux edit mode
   { key = "]",  mods = "Command", chars = "\u0002]" },  # tmux paste
+  { key = "i",  mods = "Command", chars = "\u0002w" },  # tmux open sessin finder
+  { key = "9",  mods = "Command", chars = "\u0002(" },  # tmux prev session
+  { key = "0",  mods = "Command", chars = "\u0002)" },  # tmux next session
+  { key = "o",  mods = "Command", chars = "\u0002o" },  # tmux new session
+  #{ key = "-",  mods = "Command", chars = "\u0002O" },  # tmux new session
+  { key = "/",  mods = "Command", chars = "\u0002K" },  # tmux set current path as base
+  { key = "e",  mods = "Command", chars = "\u0002e" },  # tmux sync panes on
+  #{ key = "E",  mods = "Command", chars = "\u0002E" },  # tmux sync panes off
 ]
