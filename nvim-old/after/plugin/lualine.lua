@@ -1,7 +1,7 @@
 require('lualine').setup({
     options = {
         icons_enabled = true,
-        -- theme = 'vague',
+        theme = 'one_monokai',
         component_separators = { left = "", right = "" },
         section_separators = { left = "", right = "" },
         --component_separators = { left = "", right = "" },
